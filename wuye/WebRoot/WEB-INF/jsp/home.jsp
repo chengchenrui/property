@@ -258,7 +258,7 @@
  						//alert(treeObj);
 						zTree = $.fn.zTree.getZTreeObj(treeObj);
 						if( zTree ){
-							// 默认展开所有节点
+							// 默认true展开所有节点
 							zTree.expandAll(false);
 						}
 					}

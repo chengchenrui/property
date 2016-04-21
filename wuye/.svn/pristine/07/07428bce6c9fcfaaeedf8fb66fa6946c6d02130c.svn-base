@@ -43,12 +43,7 @@
 	        	window.location.href = 'house_list.html';
 	        }
 	    });
-
-		var q_name = $('#q_name').val();
-		var q_houseId = $('#q_houseId').val();
-		var dateStart = $('dateStart').val();
-		var dateEnd = $('#dateEnd').val();
-		var start = $('#start').val();
+		
 	    /**编辑   **/
 	    $("a.edit").fancybox({
 	    	'width' : 733,
@@ -57,7 +52,8 @@
 	        'hideOnOverlayClick' : false,
 	        'showCloseButton' : false,
 	        'onClosed' : function() { 
-	        	window.location.href = "user_queryData.action?q_name="+q_name+"&q_houseId="+q_houseId+"&dateStart="+dateStart+"&dateEnd"+dateEnd+"&start="+start;
+	        	window.location.href = 'javascript:history.back(-1)';
+	        	//window.location.href ='user_queryData.action?q_name='+q_name;
 	        }
 	    });
 	});
@@ -148,7 +144,6 @@
 	<body>
 		<form id="submitForm" name="submitForm" action="user_queryData.action"
 			method="post">
-			<input type="hidden" id="start" value="<s:property value="#request.(#request.currentPage-1)*7" />" />
 			<div id="container">
 				<div class="ui_content">
 					<div class="ui_text_indent">
@@ -157,12 +152,16 @@
 								搜索
 							</div>
 							<div id="box_center">
-								住户姓名：
+								用户名：
 								<input type="text" value="<s:property value="#request.q_name"/>"
 									id="q_name" name="q_name" class="ui_input_txt02" />
-								房间号：
-								<input type="text" value="<s:property value="#request.q_houseId"/>"
-									id="q_houseId" name="q_houseId" class="ui_input_txt02" />
+								房号：
+								<select name="q_houseId" id="q_houseId"
+									class="ui_select01">
+									<option value="-1" selected="selected">
+										--请选择--
+									</option>
+								</select>
 								开始时间：
 								<input id="dateStart" name="dateStart" class="ui_input_txt02"
 									type="text" value="<s:property value="#request.dateStart"/>"
@@ -197,9 +196,6 @@
 										onclick="selectOrClearAllCheckbox(this);" />
 								</th>
 								<th>
-									住户姓名
-								</th>
-								<th>
 									用户名
 								</th>
 								<th>
@@ -231,16 +227,13 @@
 										<s:property value="#user.name" />
 									</td>
 									<td>
-										<s:property value="#user.userName"/>
-									</td>
-									<td>
 										<s:property value="#user.phone" />
 									</td>
 									<td>
 										<s:property value="#user.mial" />
 									</td>
 									<td>
-										<s:property value="#user.house.id" />
+										<s:property value="#user.houseId" />
 									</td>
 									<td>
 										<s:property value="#user.description" />
@@ -252,7 +245,7 @@
 										<a class="edit" href="user_toUpdate.action?id=<s:property value="#user.id" />
 										&q_name=<s:property value="#request.q_name"/>
 										&q_houseId=<s:property value="#request.q_houseId"/>
-										&start=<s:property value="#request.(#request.currentPage-1)*7" />
+										&start=<s:property value="#request.(#request.currentPage-1)*8" />
 										&dateStart=<s:property value="#request.dateStart"/>
 										&dateEnd=<s:property value="#request.dateEnd"/>">编辑</a>
 										<a href="javascript:del('<s:property value="#user.id" />');">删除</a>
@@ -306,7 +299,7 @@
 										'<s:property value="#request.q_houseId"/>',
 										'<s:property value="#request.dateStart"/>',
 										'<s:property value="#request.dateEnd"/>',
-										'<s:property value="#request.allPage*7-7"/>')"
+										'<s:property value="#request.allPage*8-8"/>')"
 									value="尾页" class="ui_input_btn01" />
 							</s:if>
 							<!-- 如果是最后一页，则只显示首页、上一页  -->

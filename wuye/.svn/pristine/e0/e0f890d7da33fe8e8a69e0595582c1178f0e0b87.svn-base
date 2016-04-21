@@ -87,9 +87,6 @@
 		<property name="userService">
 			<ref bean="userService" />
 		</property>
-		<property name="houseService">
-			<ref bean="houseService"/>
-		</property>
 	</bean>
 	<bean id="houseAction" class="com.wuye.action.HouseAction">
 		<property name="houseService">

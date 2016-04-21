@@ -17,6 +17,8 @@ public interface IUserDAO {
 	public abstract List findByProperty(String propertyName, Object value);
 
 	public abstract List findByName(Object name);
+	
+	public abstract List findByUserName(Object userName);
 
 	public abstract List findByPassword(Object password);
 

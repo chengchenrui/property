@@ -40,7 +40,7 @@
 									id="name" value="<s:property value="#request.userName"/>" />
 							</div>
 							<div>
-								密&nbsp;&nbsp;&nbsp;码：
+								密&nbsp;&nbsp;&nbsp;&nbsp;码：
 								<input type="password" name="password" class="pwd" id="pwd"
 									value="<s:property value="#request.password"/>" onkeypress="EnterPress(event)"
 									onkeydown="EnterPress()" />

@@ -31,6 +31,7 @@ public class UserDAO extends HibernateDaoSupport implements IUserDAO {
 	private static final Logger log = LoggerFactory.getLogger(UserDAO.class);
 	// property constants
 	public static final String NAME = "name";
+	public static final String USER_NAME = "userName";
 	public static final String PASSWORD = "password";
 	public static final String PHONE = "phone";
 	public static final String MIAL = "mial";
@@ -40,7 +41,10 @@ public class UserDAO extends HibernateDaoSupport implements IUserDAO {
 	protected void initDao() {
 		// do nothing
 	}
-
+	/*
+	 * (non-Javadoc)
+	 * @see com.wuye.dao.IUserDAO#save(com.wuye.model.User)
+	 */
 	public void save(User transientInstance) {
 		log.debug("saving User instance");
 		try {
@@ -52,6 +56,10 @@ public class UserDAO extends HibernateDaoSupport implements IUserDAO {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.wuye.dao.IUserDAO#delete(com.wuye.model.User)
+	 */
 	public void delete(User persistentInstance) {
 		log.debug("deleting User instance");
 		try {
@@ -63,6 +71,10 @@ public class UserDAO extends HibernateDaoSupport implements IUserDAO {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.wuye.dao.IUserDAO#findById(java.lang.Integer)
+	 */
 	public User findById(java.lang.Integer id) {
 		log.debug("getting User instance with id: " + id);
 		try {
@@ -75,6 +87,10 @@ public class UserDAO extends HibernateDaoSupport implements IUserDAO {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.wuye.dao.IUserDAO#findByExample(com.wuye.model.User)
+	 */
 	public List findByExample(User instance) {
 		log.debug("finding User instance by example");
 		try {
@@ -88,6 +104,10 @@ public class UserDAO extends HibernateDaoSupport implements IUserDAO {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.wuye.dao.IUserDAO#findByProperty(java.lang.String, java.lang.Object)
+	 */
 	public List findByProperty(String propertyName, Object value) {
 		log.debug("finding User instance with property: " + propertyName
 				+ ", value: " + value);
@@ -101,30 +121,66 @@ public class UserDAO extends HibernateDaoSupport implements IUserDAO {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.wuye.dao.IUserDAO#findByName(java.lang.Object)
+	 */
 	public List findByName(Object name) {
 		return findByProperty(NAME, name);
 	}
-
+	
+	/*
+	 * (non-Javadoc)
+	 * @see com.wuye.dao.IUserDAO#findByUserName(java.lang.Object)
+	 */
+	public List findByUserName(Object userName) {
+		return findByProperty(USER_NAME, userName);
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see com.wuye.dao.IUserDAO#findByPassword(java.lang.Object)
+	 */
 	public List findByPassword(Object password) {
 		return findByProperty(PASSWORD, password);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.wuye.dao.IUserDAO#findByPhone(java.lang.Object)
+	 */
 	public List findByPhone(Object phone) {
 		return findByProperty(PHONE, phone);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.wuye.dao.IUserDAO#findByMial(java.lang.Object)
+	 */
 	public List findByMial(Object mial) {
 		return findByProperty(MIAL, mial);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.wuye.dao.IUserDAO#findByHouseId(java.lang.Object)
+	 */
 	public List findByHouseId(Object houseId) {
 		return findByProperty(HOUSE_ID, houseId);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.wuye.dao.IUserDAO#findByDescription(java.lang.Object)
+	 */
 	public List findByDescription(Object description) {
 		return findByProperty(DESCRIPTION, description);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.wuye.dao.IUserDAO#findAll()
+	 */
 	public List findAll() {
 		log.debug("finding all User instances");
 		try {
@@ -136,6 +192,10 @@ public class UserDAO extends HibernateDaoSupport implements IUserDAO {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.wuye.dao.IUserDAO#merge(com.wuye.model.User)
+	 */
 	public User merge(User detachedInstance) {
 		log.debug("merging User instance");
 		try {
@@ -148,6 +208,10 @@ public class UserDAO extends HibernateDaoSupport implements IUserDAO {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.wuye.dao.IUserDAO#attachDirty(com.wuye.model.User)
+	 */
 	public void attachDirty(User instance) {
 		log.debug("attaching dirty User instance");
 		try {
@@ -159,6 +223,10 @@ public class UserDAO extends HibernateDaoSupport implements IUserDAO {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.wuye.dao.IUserDAO#attachClean(com.wuye.model.User)
+	 */
 	public void attachClean(User instance) {
 		log.debug("attaching clean User instance");
 		try {
@@ -191,8 +259,8 @@ public class UserDAO extends HibernateDaoSupport implements IUserDAO {
 			if (Tools.isEmptyString(name) == false) {
 				queryHQL += " and u.name like :name";
 			}
-			if (houseId > 0 && Tools.isEmptyString(String.valueOf(houseId))) {
-				queryHQL += " and u.house.id =:houseId";
+			if (houseId > 0) {
+				queryHQL += " and u.house.id = :houseId";
 			}
 			if (startDate != null) {
 				queryHQL += " and u.createTime >= :startDate";
@@ -207,7 +275,7 @@ public class UserDAO extends HibernateDaoSupport implements IUserDAO {
 			if (Tools.isEmptyString(name) == false) {
 				query.setParameter("name", "%" + name + "%");
 			}
-			if (houseId > 0 && Tools.isEmptyString(String.valueOf(houseId))) {
+			if (houseId > 0) {
 				query.setParameter("houseId", houseId);
 			}
 			if (startDate != null) {
@@ -245,8 +313,8 @@ public class UserDAO extends HibernateDaoSupport implements IUserDAO {
 			if (Tools.isEmptyString(name) == false) {
 				queryHQL += " and u.name like :name";
 			}
-			if (houseId > 0 && Tools.isEmptyString(String.valueOf(houseId))) {
-				queryHQL += " and u.house.id =:houseId";
+			if (houseId > 0) {
+				queryHQL += " and u.house.id = :houseId";
 			}
 			if (startDate != null) {
 				queryHQL += " and u.createTime >= :startDate";
@@ -261,7 +329,7 @@ public class UserDAO extends HibernateDaoSupport implements IUserDAO {
 			if (Tools.isEmptyString(name) == false) {
 				query.setParameter("name", "%" + name + "%");
 			}
-			if (houseId > 0 && Tools.isEmptyString(String.valueOf(houseId))) {
+			if (houseId > 0) {
 				query.setParameter("houseId", houseId);
 			}
 			if (startDate != null) {

@@ -106,4 +106,9 @@ public class UserService implements IUserService {
 		return userDAO.findByParam(name, houseId, startDate, endDate, start, size);
 	}
 
+	public List findByUserName(Object userName) {
+		// TODO Auto-generated method stub
+		return userDAO.findByUserName(userName);
+	}
+
 }

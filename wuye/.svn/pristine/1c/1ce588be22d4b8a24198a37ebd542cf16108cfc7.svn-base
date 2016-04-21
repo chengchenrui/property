@@ -20,8 +20,8 @@
 		 */
 		$("#submitbutton").click(function() {
 			if(validateForm()){
-				checkUserName()
-				
+				$("#submitForm").attr("action", "user_updateData.action").submit();
+				window.parent.$.fancybox.close();
 			}
 		});
 		
@@ -33,33 +33,7 @@
 			window.parent.$.fancybox.close();
 		});
 	});
-
-	/** 检测用户名是否存在并提交form  **/
-	function checkUserName(){
-		var userName = $('#userName').val();
-		var id = $('#id').val();
-		if(userName != null){
-			$.ajax({
-				type:"GET",
-				url:"user_queryByUserName.action?userName="+userName,
-				dataType:"json",
-				success:function(data){
-				alert("id="+id+"::"+"data.id="+data.id);
-					if(data != null){
-						if(id != data.id){
-							art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'该用户名已存在！', ok:true,});
-							return false
-						}else{
-							$("#submitForm").attr("action", "user_updateData.action").submit();
-						}
-					}else{
-						$("#submitForm").attr("action", "user_updateData.action").submit();
-					}
-				}
-			});
-		}
-		return true;
-	}
+	
 	/** 表单验证  **/
 	function validateForm(){
 		if($("#name").val()==""){
@@ -102,21 +76,15 @@
 		<div class="ui_content">
 			<table  cellspacing="0" cellpadding="0" width="100%" align="left" border="0">
 				<tr>
-					<td class="ui_text_rt" width="80">住户姓名：</td>
+					<td class="ui_text_rt" width="80">用户名：</td>
 					<td class="ui_text_lt">
 						<input id="name" name="name" value="<s:property value="#request.name" />" />
 					</td>
 				</tr>
 				<tr>
-					<td class="ui_text_rt" width="80">用户名：</td>
-					<td class="ui_text_lt">
-						<input id="userName" name="userName" value="<s:property value="#request.userName" />" />
-					</td>
-				</tr>
-				<tr>
 					<td class="ui_text_rt" width="80">房间号：</td>
 					<td class="ui_text_lt">
-						<input id="houseId" name="houseId" value="<s:property value="#request.house.id" />" />
+						<input id="houseId" name="houseId" value="<s:property value="#request.houseId" />" />
 					</td>
 				</tr>
 				<tr>

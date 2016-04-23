@@ -16,7 +16,7 @@ public class User implements java.io.Serializable {
 	private String userName;
 	private String password;
 	private String phone;
-	private String mial;
+	private String mail;
 	private House house;
 	private String description;
 	private Date createTime;
@@ -30,14 +30,14 @@ public class User implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public User(String name,String userName, String password, String phone, String mial,
+	public User(String name,String userName, String password, String phone, String mail,
 			House house, String description, Date createTime,
 			Date updateTime, String userIcon) {
 		this.name = name;
 		this.userName = userName;
 		this.password = password;
 		this.phone = phone;
-		this.mial = mial;
+		this.mail = mail;
 		this.house = house;
 		this.description = description;
 		this.createTime = createTime;
@@ -87,12 +87,12 @@ public class User implements java.io.Serializable {
 		this.phone = phone;
 	}
 
-	public String getMial() {
-		return this.mial;
+	public String getMail() {
+		return mail;
 	}
 
-	public void setMial(String mial) {
-		this.mial = mial;
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 
 	public House getHouse() {

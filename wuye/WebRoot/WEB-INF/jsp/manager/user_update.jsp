@@ -18,12 +18,12 @@
 		/*
 		 * 提交
 		 */
-		$("#submitbutton").click(function() {
+		/**$("#submitbutton").click(function() {
 			if(validateForm()){
-				checkUserName()
-				
+				checkUserName();
+				//window.parent.$.fancybox.close();
 			}
-		});
+		});**/
 		
 		/*
 		 * 取消
@@ -35,9 +35,9 @@
 	});
 
 	/** 检测用户名是否存在并提交form  **/
-	function checkUserName(){
-		var userName = $('#userName').val();
-		var id = $('#id').val();
+	/**function checkUserName(){
+		var userName = $("#userName").val();
+		var id = $("#id").val();
 		if(userName != null){
 			$.ajax({
 				type:"GET",
@@ -45,12 +45,13 @@
 				dataType:"json",
 				success:function(data){
 				alert("id="+id+"::"+"data.id="+data.id);
-					if(data != null){
+					if(data != null || date.length() <= 0){
 						if(id != data.id){
 							art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'该用户名已存在！', ok:true,});
-							return false
+							return false;
 						}else{
 							$("#submitForm").attr("action", "user_updateData.action").submit();
+							window.location.href = "/wuye/WebRoot/error.jsp"
 						}
 					}else{
 						$("#submitForm").attr("action", "user_updateData.action").submit();
@@ -59,11 +60,15 @@
 			});
 		}
 		return true;
-	}
+	}**/
 	/** 表单验证  **/
 	function validateForm(){
 		if($("#name").val()==""){
-			art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'填写用户姓名', ok:true,});
+			art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'填写住户姓名', ok:true,});
+			return false;
+		}
+		if($("#userName").val==""){
+			art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'填写用户名', ok:true,});
 			return false;
 		}
 		if($("#houseId").val()==""){
@@ -102,47 +107,60 @@
 		<div class="ui_content">
 			<table  cellspacing="0" cellpadding="0" width="100%" align="left" border="0">
 				<tr>
-					<td class="ui_text_rt" width="80">住户姓名：</td>
-					<td class="ui_text_lt">
+					<td class="ui_text_rt" width="15%">住户姓名：</td>
+					<td class="ui_text_lt" width="20%">
 						<input id="name" name="name" value="<s:property value="#request.name" />" />
 					</td>
+					<td class="ui_text_lt" width="20%"><font color="red"><s:fielderror><s:param>name</s:param></s:fielderror></font></td>
+					<td width="45%">&nbsp;</td>
 				</tr>
 				<tr>
-					<td class="ui_text_rt" width="80">用户名：</td>
+					<td class="ui_text_rt">用户名：</td>
 					<td class="ui_text_lt">
 						<input id="userName" name="userName" value="<s:property value="#request.userName" />" />
 					</td>
+					<td class="ui_text_lt"><font color="red"><s:fielderror><s:param>userName</s:param></s:fielderror></font></td>
+					<td>&nbsp;</td>
 				</tr>
 				<tr>
-					<td class="ui_text_rt" width="80">房间号：</td>
-					<td class="ui_text_lt">
-						<input id="houseId" name="houseId" value="<s:property value="#request.house.id" />" />
+					<td class="ui_text_rt">房间号：</td>
+					<td class="ui_text_lt" >
+						<input id="houseId" name="houseId" value="<s:property value="#request.houseId" />" />
 					</td>
+					<td class="ui_text_lt" ><font color="red"><s:fielderror><s:param>house</s:param></s:fielderror></font></td>
+					<td>&nbsp;</td>
 				</tr>
 				<tr>
-					<td class="ui_text_rt" width="80">手机号：</td>
+					<td class="ui_text_rt">手机号：</td>
 					<td class="ui_text_lt">
 						<input id="phone" name="phone" value="<s:property value="#request.phone" />" />
 					</td>
+					<td class="ui_text_lt"><font color="red"><s:fielderror><s:param>phone</s:param></s:fielderror></font></td>
+					<td>&nbsp;</td>
 				</tr>
 				<tr>
-					<td class="ui_text_rt" width="80">邮箱号：</td>
+					<td class="ui_text_rt">邮箱号：</td>
 					<td class="ui_text_lt">
-						<input id="mial" name="mial" value="<s:property value="#request.mial" />" />
+						<input id="mail" name="mail" value="<s:property value="#request.mail" />" />
 					</td>
+					<td class="ui_text_lt"><font color="red"><s:fielderror><s:param>mail</s:param></s:fielderror></font></td>
+					<td>&nbsp;</td>
 				</tr>
 				<tr>
-					<td class="ui_text_rt" width="80">描述：</td>
-					<td class="ui_text_lt">
+					<td class="ui_text_rt">描述：</td>
+					<td class="ui_text_lt" colspan="2">
 						<textarea id="description" name="description" rows="6" cols="50"><s:property value="#request.description" /></textarea>
 					</td>
+					<td>&nbsp;</td>
 				</tr>
 				<tr>
 					<td>&nbsp;</td>
 					<td class="ui_text_lt">
-						&nbsp;<input id="submitbutton" type="button" value="提交" class="ui_input_btn01"/>
+						&nbsp;<input id="submitbutton" type="submit" value="提交" class="ui_input_btn01"/>
 						&nbsp;<input id="cancelbutton" type="button" value="取消" class="ui_input_btn01"/>
 					</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
 				</tr>
 			</table>
 		</div>

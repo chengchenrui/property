@@ -144,8 +144,8 @@ public class UserAction extends MyBaseAction {
 		this.getRequest().setAttribute("name", user.getName());
 		this.getRequest().setAttribute("userName", user.getUserName());
 		this.getRequest().setAttribute("phone", user.getPhone());
-		this.getRequest().setAttribute("mial", user.getMial());
-		this.getRequest().setAttribute("house", user.getHouse());
+		this.getRequest().setAttribute("mail", user.getMail());
+		this.getRequest().setAttribute("houseId", user.getHouse().getId());
 		this.getRequest().setAttribute("description", user.getDescription());
 
 		// 使修改完成回到原页面
@@ -172,7 +172,7 @@ public class UserAction extends MyBaseAction {
 		String name = this.getRequest().getParameter("name");
 		String userName = this.getRequest().getParameter("userName");
 		String phone = this.getRequest().getParameter("phone");
-		String mial = this.getRequest().getParameter("mial");
+		String mail = this.getRequest().getParameter("mail");
 		String houseIdStr = this.getRequest().getParameter("houseId");
 		String description = this.getRequest().getParameter("description");
 
@@ -180,12 +180,12 @@ public class UserAction extends MyBaseAction {
 		this.getRequest().setAttribute("name", name);
 		this.getRequest().setAttribute("userName", userName);
 		this.getRequest().setAttribute("phone", phone);
-		this.getRequest().setAttribute("mial", mial);
+		this.getRequest().setAttribute("mail", mail);
 		this.getRequest().setAttribute("houseId", houseIdStr);
 		this.getRequest().setAttribute("description", description);
 
 		User user = userService.findById(Integer.parseInt(id));
-		List userList = userService.findByName(name);
+		List userList = userService.findByUserName(userName);
 		if (userList != null && userList.size() > 0) {
 			int flag = 0;
 			for (int i = 0; i < userList.size(); i++) {
@@ -195,45 +195,52 @@ public class UserAction extends MyBaseAction {
 				}
 			}
 			if (flag > 0) {
-				addFieldError("name", getText("用户" + name + "已存在！"));
-				return "error";
+				addFieldError("name", getText("*用户" + userName + "已存在！"));
+				return "userUpdate";
 			}
 		}
 
 		if (Tools.isEmptyString(name) == true) {
-			addFieldError("name", getText("用户名不能为空！"));
-			return "error";
+			addFieldError("name", getText("*用户名不能为空！"));
+			return "userUpdate";
 		}
 
 		if (Tools.isEmptyString(userName) == true) {
-			addFieldError("userName", getText("用户名不能为空！"));
-			return "error";
+			addFieldError("userName", getText("*用户名不能为空！"));
+			return "userUpdate";
 		}
 
 		if (Tools.isEmptyString(houseIdStr) == true) {
-			addFieldError("", getText("房间号不能为空！"));
-			return "error";
+			addFieldError("house", getText("*房间号不能为空！"));
+			return "userUpdate";
 		}
 
 		if (Tools.isEmptyString(phone) == true) {
-			addFieldError("phone", getText("电话号码不能为空！"));
-			return "error";
+			addFieldError("phone", getText("*电话号码不能为空！"));
+			return "userUpdate";
 		}
-		if (Tools.isEmptyString(mial) == true) {
-			addFieldError("mail", getText("邮箱不能为空！"));
-			return "error";
+		if (Tools.isEmptyString(mail) == true) {
+			addFieldError("mail", getText("*邮箱不能为空！"));
+			return "userUpdate";
 		}
-
-		House house = houseService.findById(Integer.parseInt(houseIdStr));
+		
+		int houesId = 0;
+		try {
+			houesId = Integer.parseInt(houseIdStr);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		House house = houseService.findById(houesId);
 		if (house == null) {
-			addFieldError("house", getText("该房间号不存在！"));
-			return "error";
+			addFieldError("house", getText("*该房间号不存在！"));
+			return "userUpdate";
 		}
 
 		user.setName(name);
 		user.setUserName(userName);
 		user.setPhone(phone);
-		user.setMial(mial);
+		user.setMail(mail);
 		user.setHouse(house);
 		user.setDescription(description);
 		user.setUpdateTime(new Date());
@@ -272,5 +279,9 @@ public class UserAction extends MyBaseAction {
 		}
 
 		return null;
+	}
+	
+	public String upSuccess(){
+		return "updateSuccess";
 	}
 }

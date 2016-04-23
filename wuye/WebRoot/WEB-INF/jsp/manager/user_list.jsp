@@ -44,11 +44,6 @@
 	        }
 	    });
 
-		var q_name = $('#q_name').val();
-		var q_houseId = $('#q_houseId').val();
-		var dateStart = $('dateStart').val();
-		var dateEnd = $('#dateEnd').val();
-		var start = $('#start').val();
 	    /**编辑   **/
 	    $("a.edit").fancybox({
 	    	'width' : 733,
@@ -56,8 +51,8 @@
 	        'type' : 'iframe',
 	        'hideOnOverlayClick' : false,
 	        'showCloseButton' : false,
-	        'onClosed' : function() { 
-	        	window.location.href = "user_queryData.action?q_name="+q_name+"&q_houseId="+q_houseId+"&dateStart="+dateStart+"&dateEnd"+dateEnd+"&start="+start;
+	        'onClosed' : function(q_name,q_houseId,dateStart,dateEnd,start) {
+	        	window.location.href = "javascript:history.go(-1);"
 	        }
 	    });
 	});
@@ -159,17 +154,17 @@
 							<div id="box_center">
 								住户姓名：
 								<input type="text" value="<s:property value="#request.q_name"/>"
-									id="q_name" name="q_name" class="ui_input_txt02" />
+									id="q_name" name="q_name" class="ui_input_txt02" style="width: 100px;"/>&nbsp;
 								房间号：
 								<input type="text" value="<s:property value="#request.q_houseId"/>"
-									id="q_houseId" name="q_houseId" class="ui_input_txt02" />
+									id="q_houseId" name="q_houseId" class="ui_input_txt02" style="width: 100px;" />&nbsp;
 								开始时间：
-								<input id="dateStart" name="dateStart" class="ui_input_txt02"
+								<input id="dateStart" name="dateStart" style="width: 100px;"
 									type="text" value="<s:property value="#request.dateStart"/>"
-									class="Wdate" onfocus="WdatePicker()" />
-									结束时间：
-								<input id="dateEnd" name="dateEnd" type="text"
-									value="<s:property value="#request.dateEnd"/>"
+									class="ui_input_txt02" onfocus="WdatePicker()" />&nbsp;
+								结束时间：
+								<input id="dateEnd" name="dateEnd"  style="width: 100px;"
+									type="text" value="<s:property value="#request.dateEnd"/>"
 									class="ui_input_txt02" onfocus="WdatePicker()" />
 							</div>
 							<div id="box_bottom">
@@ -182,7 +177,6 @@
 									id="importBtn" />
 								<input type="button" value="导出" class="ui_input_btn01"
 									onclick="exportExcel();" />
-
 							</div>
 						</div>
 					</div>
@@ -237,7 +231,7 @@
 										<s:property value="#user.phone" />
 									</td>
 									<td>
-										<s:property value="#user.mial" />
+										<s:property value="#user.mail" />
 									</td>
 									<td>
 										<s:property value="#user.house.id" />

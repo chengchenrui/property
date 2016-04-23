@@ -34,7 +34,7 @@ public class UserDAO extends HibernateDaoSupport implements IUserDAO {
 	public static final String USER_NAME = "userName";
 	public static final String PASSWORD = "password";
 	public static final String PHONE = "phone";
-	public static final String MIAL = "mial";
+	public static final String MAIL = "mail";
 	public static final String HOUSE_ID = "houseId";
 	public static final String DESCRIPTION = "description";
 
@@ -157,8 +157,8 @@ public class UserDAO extends HibernateDaoSupport implements IUserDAO {
 	 * (non-Javadoc)
 	 * @see com.wuye.dao.IUserDAO#findByMial(java.lang.Object)
 	 */
-	public List findByMial(Object mial) {
-		return findByProperty(MIAL, mial);
+	public List findByMail(Object mail) {
+		return findByProperty(MAIL, mail);
 	}
 
 	/*

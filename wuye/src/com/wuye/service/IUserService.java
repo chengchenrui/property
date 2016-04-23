@@ -24,7 +24,7 @@ public interface IUserService {
 
 	public abstract List findByPhone(Object phone);
 
-	public abstract List findByMial(Object mial);
+	public abstract List findByMail(Object mail);
 
 	public abstract List findByHouseId(Object houseId);
 

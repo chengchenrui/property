@@ -18,6 +18,7 @@
 			<result name="toList" type="redirect">user_queryData.action</result>
 			<result name="userList">/WEB-INF/jsp/manager/user_list.jsp</result>
 			<result name="userUpdate">/WEB-INF/jsp/manager/user_update.jsp</result>
+			
 		</action>
 		
 	</package>

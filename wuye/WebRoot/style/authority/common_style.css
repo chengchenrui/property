@@ -24,6 +24,7 @@ body {
 html,body,div,h1,ul,li,select,p,iframe,input,textarea {
 	margin: 0;
 	padding: 0;
+	list-style: none;
 }
 
 a:link,a:visited,a:hover,a:active {
@@ -80,10 +81,12 @@ a:hover {
 
 .ui_text_lt {
 	text-align: left;
+	padding: 5px;
 }
 
 .ui_text_rt {
 	text-align: right;
+	padding: 5px;
 }
 
 .ui_flt {
@@ -141,8 +144,8 @@ a:hover {
 }
 
 .ui_input_txt02 {
-	width: 150px;
-	height: 18px;
+	width: 100px;
+	height: 15px;
 	margin: 2px 2px 2px 5px;
 	outline: 0;
 	padding: 5px;

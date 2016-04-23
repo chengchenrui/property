@@ -22,8 +22,8 @@
 		<property name="phone" type="java.lang.String">
 			<column name="phone" length="20" />
 		</property>
-		<property name="mial" type="java.lang.String">
-			<column name="mial" length="50" />
+		<property name="mail" type="java.lang.String">
+			<column name="mail" length="50" />
 		</property>
 		<many-to-one name="house" column="house_id" class="com.wuye.model.House"
 			lazy="false" unique="true">

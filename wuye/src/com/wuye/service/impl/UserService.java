@@ -59,9 +59,9 @@ public class UserService implements IUserService {
 		return userDAO.findById(id);
 	}
 
-	public List findByMial(Object mial) {
+	public List findByMail(Object mail) {
 		// TODO Auto-generated method stub
-		return userDAO.findByMial(mial);
+		return userDAO.findByMail(mail);
 	}
 
 	public List findByName(Object name) {

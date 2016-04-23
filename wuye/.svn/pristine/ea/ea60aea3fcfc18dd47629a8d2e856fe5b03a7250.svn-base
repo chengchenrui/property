@@ -280,34 +280,8 @@ public class UserAction extends MyBaseAction {
 
 		return null;
 	}
-	/**
-	 * 删除
-	 * @return
-	 */
-	public String deleteData(){
-		String id = this.getRequest().getParameter("id");
-		User user = userService.findById(Integer.parseInt(id));
-		if (user == null) {
-			addFieldError(id, getText("该用户不存在！"));
-			return "error";
-		}
-		try {
-			userService.delete(user);
-		} catch (Exception e) {
-			logger.error("删除失败", e);
-		}
-		
-		//删除返回原页面
-		String name = this.getRequest().getParameter("q_name");
-		String houseId = this.getRequest().getParameter("q_houseId");
-		String start = this.getRequest().getParameter("start");
-
-		this.getRequest().setAttribute("q_name", name);
-		this.getRequest().setAttribute("q_houseId", houseId);
-		this.getRequest().setAttribute("start", start);
-		this.getRequest().setAttribute("dateStart", dateStart);
-		this.getRequest().setAttribute("dateEnd", dateEnd);
-		
-		return queryData();
+	
+	public String upSuccess(){
+		return "updateSuccess";
 	}
 }

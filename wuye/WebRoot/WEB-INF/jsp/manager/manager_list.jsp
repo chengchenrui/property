@@ -16,8 +16,6 @@
 		<title>物业管理系统</title>
 		<script type="text/javascript">
 	$(document).ready(function(){
-		
-		
 	/** 用户角色   **/
 	var userRole = '';
 
@@ -85,12 +83,12 @@
 	}
 </script>
 <script type="text/javascript">
-	function pageButton(q_name,q_houseId,dateStart,dateEnd,start){
-		window.location.href="user_queryData.action?q_name="+q_name+"&q_houseId="+q_houseId+"&dateStart="+dateStart+"&dateEnd="+dateEnd+"&start="+start;
+	function pageButton(q_name,dateStart,dateEnd,start){
+		window.location.href="mag_queryData.action?q_name="+q_name+"&dateStart="+dateStart+"&dateEnd="+dateEnd+"&start="+start;
 	}
 	function changePageNmu(el) {
 		var appOpenData = document.getElementById("submitForm");
-		appOpenData.action = "user_queryData.action?start=" + el.value;
+		appOpenData.action = "mag_queryData.action?start=" + el.value;
 		var buttom = document.getElementById("submit");
 		buttom.click();
 	}
@@ -113,7 +111,7 @@
 </style>
 	</head>
 	<body>
-		<form id="submitForm" name="submitForm" action="user_queryData.action"
+		<form id="submitForm" name="submitForm" action="mag_queryData.action"
 			method="post">
 			<input type="hidden" id="start" value="<s:property value="#request.(#request.currentPage-1)*7" />" />
 			<div id="container">
@@ -124,12 +122,9 @@
 								搜索
 							</div>
 							<div id="box_center">
-								住户姓名：
+								管理员姓名：
 								<input type="text" value="<s:property value="#request.q_name"/>"
 									id="q_name" name="q_name" class="ui_input_txt02" style="width: 100px;"/>&nbsp;
-								房间号：
-								<input type="text" value="<s:property value="#request.q_houseId"/>"
-									id="q_houseId" name="q_houseId" class="ui_input_txt02" style="width: 100px;" />&nbsp;
 								开始时间：
 								<input id="dateStart" name="dateStart" style="width: 100px;"
 									type="text" value="<s:property value="#request.dateStart"/>"
@@ -163,19 +158,13 @@
 										onclick="selectOrClearAllCheckbox(this);" />
 								</th>
 								<th>
-									住户姓名
+									管理员姓名
 								</th>
 								<th>
 									用户名
 								</th>
 								<th>
 									电话
-								</th>
-								<th>
-									邮箱
-								</th>
-								<th>
-									房号
 								</th>
 								<th>
 									描述
@@ -187,43 +176,35 @@
 									操作
 								</th>
 							</tr>
-							<s:iterator value="backList" var="user">
+							<s:iterator value="backList" var="mag">
 								<tr>
 									<td>
 										<input type="checkbox" name="id"
-											value="<s:property value="#user.id" />" class="acb" />
+											value="<s:property value="#mag.id" />" class="acb" />
 									</td>
 									<td>
-										<s:property value="#user.name" />
+										<s:property value="#mag.name" />
 									</td>
 									<td>
-										<s:property value="#user.userName"/>
+										<s:property value="#mag.userName"/>
 									</td>
 									<td>
-										<s:property value="#user.phone" />
+										<s:property value="#mag.phone" />
 									</td>
 									<td>
-										<s:property value="#user.mail" />
+										<s:property value="#mag.description" />
 									</td>
 									<td>
-										<s:property value="#user.house.id" />
+										<s:date name="#mag.createTime" />
 									</td>
 									<td>
-										<s:property value="#user.description" />
-									</td>
-									<td>
-										<s:date name="#user.createTime" />
-									</td>
-									<td>
-										<a class="edit" href="user_toUpdate.action?id=<s:property value="#user.id" />
+										<a class="edit" href="user_toUpdate.action?id=<s:property value="#mag.id" />
 											&q_name=<s:property value="#request.q_name"/>
-											&q_houseId=<s:property value="#request.q_houseId"/>
 											&start=<s:property value="#request.(#request.currentPage-1)*7" />
 											&dateStart=<s:property value="#request.dateStart"/>
 											&dateEnd=<s:property value="#request.dateEnd"/>">编辑</a>
 										<a onclick="return firm('<s:property value="#user.name" />')" href="user_deleteData.action?id=<s:property value="#user.id" />
 											&q_name=<s:property value="#request.q_name"/>
-											&q_houseId=<s:property value="#request.q_houseId"/>
 											&start=<s:property value="#request.(#request.currentPage-1)*7" />
 											&dateStart=<s:property value="#request.dateStart"/>
 											&dateEnd=<s:property value="#request.dateEnd"/>">删除</a>
@@ -249,7 +230,6 @@
 							<s:if test="#request.pre!=null">
 								<input type="button"
 									onclick="pageButton('<s:property value="#request.q_name"/>',
-										'<s:property value="#request.q_houseId"/>',
 										'<s:property value="#request.dateStart"/>',
 										'<s:property value="#request.dateEnd"/>',
 										'0')"
@@ -257,7 +237,6 @@
 
 								<input type="button"
 									onclick="pageButton('<s:property value="#request.q_name"/>',
-										'<s:property value="#request.q_houseId"/>',
 										'<s:property value="#request.dateStart"/>',
 										'<s:property value="#request.dateEnd"/>',
 										'<s:property value="#request.pre"/>')"
@@ -266,7 +245,6 @@
 							<s:if test="#request.next!=null">
 								<input type="button"
 									onclick="pageButton('<s:property value="#request.q_name"/>',
-										'<s:property value="#request.q_houseId"/>',
 										'<s:property value="#request.dateStart"/>',
 										'<s:property value="#request.dateEnd"/>',
 										'<s:property value="#request.next"/>')"
@@ -274,7 +252,6 @@
 
 								<input type="button"
 									onclick="pageButton('<s:property value="#request.q_name"/>',
-										'<s:property value="#request.q_houseId"/>',
 										'<s:property value="#request.dateStart"/>',
 										'<s:property value="#request.dateEnd"/>',
 										'<s:property value="#request.allPage*7-7"/>')"

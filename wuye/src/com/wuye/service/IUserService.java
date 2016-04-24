@@ -58,6 +58,6 @@ public interface IUserService {
 	 * @param endDate
 	 * @return
 	 */
-	public abstract int findByCount(String name, Integer houseId,
+	public abstract int findCount(String name, Integer houseId,
 			Date startDate, Date endDate);
 }

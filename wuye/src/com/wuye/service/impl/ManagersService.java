@@ -1,5 +1,6 @@
 ﻿package com.wuye.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import com.wuye.dao.IManagersDAO;
@@ -20,17 +21,17 @@ public class ManagersService implements IManagersService {
 
 	public void attachClean(Managers instance) {
 		// TODO Auto-generated method stub
-		
+		managersDAO.attachClean(instance);
 	}
 
 	public void attachDirty(Managers instance) {
 		// TODO Auto-generated method stub
-		
+		managersDAO.attachDirty(instance);
 	}
 
 	public void delete(Managers persistentInstance) {
 		// TODO Auto-generated method stub
-		
+		managersDAO.delete(persistentInstance);
 	}
 
 	public List findAll() {
@@ -85,7 +86,18 @@ public class ManagersService implements IManagersService {
 
 	public void save(Managers transientInstance) {
 		// TODO Auto-generated method stub
-		
+		managersDAO.save(transientInstance);
+	}
+
+	public List findByParam(String name, Date startDate, Date endDate,
+			int start, int size) {
+		// TODO Auto-generated method stub
+		return managersDAO.findByParam(name, startDate, endDate, start, size);
+	}
+
+	public int findCount(String name, Date startDate, Date endDate) {
+		// TODO Auto-generated method stub
+		return managersDAO.findCount(name, startDate, endDate);
 	}
 
 }

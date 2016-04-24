@@ -110,13 +110,11 @@ public class UserAction extends MyBaseAction {
 		int size = AppConstants.DATA_SIZE;
 		backList = userService.findByParam(name, houseId, startDate, endDate,
 				start, size);
-		int backCount = userService.findByCount(name, houseId, startDate,
+		int backCount = userService.findCount(name, houseId, startDate,
 				endDate);
 
 		this.getRequest().setAttribute("q_name", name);
 		this.getRequest().setAttribute("q_houseId", houseId);
-		this.getRequest().setAttribute("dateStart", startDate);
-		this.getRequest().setAttribute("dateEnd", endDate);
 		this.getRequest().setAttribute("start", start);
 
 		// 分页
@@ -156,8 +154,6 @@ public class UserAction extends MyBaseAction {
 		this.getRequest().setAttribute("q_name", name);
 		this.getRequest().setAttribute("q_houseId", houseId);
 		this.getRequest().setAttribute("start", start);
-		this.getRequest().setAttribute("dateStart", dateStart);
-		this.getRequest().setAttribute("dateEnd", dateEnd);
 
 		return "userUpdate";
 	}
@@ -203,8 +199,6 @@ public class UserAction extends MyBaseAction {
 				this.getRequest().setAttribute("q_name", q_name);
 				this.getRequest().setAttribute("q_houseId", q_houseId);
 				this.getRequest().setAttribute("start", start);
-				this.getRequest().setAttribute("dateStart", dateStart);
-				this.getRequest().setAttribute("dateEnd", dateEnd);
 				return "userUpdate";
 			}
 		}
@@ -214,8 +208,6 @@ public class UserAction extends MyBaseAction {
 			this.getRequest().setAttribute("q_name", q_name);
 			this.getRequest().setAttribute("q_houseId", q_houseId);
 			this.getRequest().setAttribute("start", start);
-			this.getRequest().setAttribute("dateStart", dateStart);
-			this.getRequest().setAttribute("dateEnd", dateEnd);
 			return "userUpdate";
 		}
 
@@ -224,8 +216,6 @@ public class UserAction extends MyBaseAction {
 			this.getRequest().setAttribute("q_name", q_name);
 			this.getRequest().setAttribute("q_houseId", q_houseId);
 			this.getRequest().setAttribute("start", start);
-			this.getRequest().setAttribute("dateStart", dateStart);
-			this.getRequest().setAttribute("dateEnd", dateEnd);
 			return "userUpdate";
 		}
 
@@ -234,8 +224,6 @@ public class UserAction extends MyBaseAction {
 			this.getRequest().setAttribute("q_name", q_name);
 			this.getRequest().setAttribute("q_houseId", q_houseId);
 			this.getRequest().setAttribute("start", start);
-			this.getRequest().setAttribute("dateStart", dateStart);
-			this.getRequest().setAttribute("dateEnd", dateEnd);
 			return "userUpdate";
 		}
 
@@ -244,8 +232,6 @@ public class UserAction extends MyBaseAction {
 			this.getRequest().setAttribute("q_name", q_name);
 			this.getRequest().setAttribute("q_houseId", q_houseId);
 			this.getRequest().setAttribute("start", start);
-			this.getRequest().setAttribute("dateStart", dateStart);
-			this.getRequest().setAttribute("dateEnd", dateEnd);
 			return "userUpdate";
 		}
 		if (Tools.isEmptyString(mail) == true) {
@@ -253,8 +239,6 @@ public class UserAction extends MyBaseAction {
 			this.getRequest().setAttribute("q_name", q_name);
 			this.getRequest().setAttribute("q_houseId", q_houseId);
 			this.getRequest().setAttribute("start", start);
-			this.getRequest().setAttribute("dateStart", dateStart);
-			this.getRequest().setAttribute("dateEnd", dateEnd);
 			return "userUpdate";
 		}
 		
@@ -271,8 +255,6 @@ public class UserAction extends MyBaseAction {
 			this.getRequest().setAttribute("q_name", q_name);
 			this.getRequest().setAttribute("q_houseId", q_houseId);
 			this.getRequest().setAttribute("start", start);
-			this.getRequest().setAttribute("dateStart", dateStart);
-			this.getRequest().setAttribute("dateEnd", dateEnd);
 			return "userUpdate";
 		}
 
@@ -342,8 +324,6 @@ public class UserAction extends MyBaseAction {
 			this.getRequest().setAttribute("q_name", name);
 			this.getRequest().setAttribute("q_houseId", houseId);
 			this.getRequest().setAttribute("start", start);
-			this.getRequest().setAttribute("dateStart", dateStart);
-			this.getRequest().setAttribute("dateEnd", dateEnd);
 			return "error";
 		}
 		try {
@@ -355,8 +335,6 @@ public class UserAction extends MyBaseAction {
 		this.getRequest().setAttribute("q_name", name);
 		this.getRequest().setAttribute("q_houseId", houseId);
 		this.getRequest().setAttribute("start", start);
-		this.getRequest().setAttribute("dateStart", dateStart);
-		this.getRequest().setAttribute("dateEnd", dateEnd);
 		
 		return queryData();
 	}

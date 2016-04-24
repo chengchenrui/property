@@ -18,7 +18,10 @@
 			<result name="toList" type="redirect">user_queryData.action</result>
 			<result name="userList">/WEB-INF/jsp/manager/user_list.jsp</result>
 			<result name="userUpdate">/WEB-INF/jsp/manager/user_update.jsp</result>
-			
+		</action>
+		<!-- 管理员管理 -->
+		<action name="mag_*" method="{1}" class="managersAction">
+			<result name="managersList">/WEB-INF/jsp/manager/manager_list.jsp</result>
 		</action>
 		
 	</package>

@@ -94,10 +94,10 @@ public class UserService implements IUserService {
 		userDAO.save(transientInstance);
 	}
 
-	public int findByCount(String name, Integer houseId, Date startDate,
+	public int findCount(String name, Integer houseId, Date startDate,
 			Date endDate) {
 		// TODO Auto-generated method stub
-		return userDAO.findByCount(name, houseId, startDate, endDate);
+		return userDAO.findCount(name, houseId, startDate, endDate);
 	}
 
 	public List findByParam(String name, Integer houseId, Date startDate,

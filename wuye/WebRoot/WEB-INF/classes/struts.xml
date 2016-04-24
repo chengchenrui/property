@@ -10,4 +10,5 @@
 		</global-results>
 	</package>
 	<include file="struts-manager.xml"/>
+	<include file="struts-client.xml"></include>
 </struts>    

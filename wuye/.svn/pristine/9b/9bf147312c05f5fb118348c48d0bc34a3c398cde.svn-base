@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="client" extends="default">
+		
+		<!-- 用户 -->
+		<action name="cliUser_*" method="{1}" class="userClientAction">
+			<result name="" type="redirect">user_queryData.action</result>
+			<result name="cliLogin">/WEB-INF/jsp/client/client_login.jsp</result>
+			<result name="cliAdd">/WEB-INF/jsp/client/client_register.jsp</result>
+		</action>
+		
+	</package>
+</struts>    

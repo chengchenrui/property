@@ -25,21 +25,15 @@
 </script>
 </head>
 <body>
-<form id="submitForm" name="submitForm" action="user_updateData.action" method="post">
-	<input type="hidden" id="id" name="id" value="<s:property value="#request.id" />" />
-	<input type="hidden" id="q_name" name="q_name" value="<s:property value="#request.q_name" />" />
-	<input type="hidden" id="q_houseId" name="q_houseId" value="<s:property value="#request.q_houseId" />" />
-	<input type="hidden" id="start" name="start" value="<s:property value="#request.start" />"/>
-	<input type="hidden" id="dateStart" name="dateStart" value="<s:property value="#request.dateStart"/>"/>
-	<input type="hidden" id="dateEnd" name="dateEnd" value="<s:property value="#request.dateEnd"/>"/>
+<form id="submitForm" name="submitForm" action="mag_addDate.action" method="post">
 	<div id="container">
 		<div id="nav_links">
-			<h3 style="color: #1A5CC6;margin-left: 50px;">用户编辑</h3>
+			<h3 style="color: #1A5CC6;margin-left: 50px;">管理员添加</h3>
 		</div>
 		<div class="ui_content">
 			<table  cellspacing="0" cellpadding="0" width="100%" align="left" border="0">
 				<tr>
-					<td class="ui_text_rt" width="10%">住户姓名：</td>
+					<td class="ui_text_rt" width="10%">管理员姓名：</td>
 					<td class="ui_text_lt" width="15%">
 						<input id="name" name="name" value="<s:property value="#request.name" />" />
 					</td>
@@ -55,27 +49,11 @@
 					<td>&nbsp;</td>
 				</tr>
 				<tr>
-					<td class="ui_text_rt">房&nbsp;间&nbsp;&nbsp;号：</td>
-					<td class="ui_text_lt" >
-						<input id="houseId" name="houseId" value="<s:property value="#request.houseId" />" />
-					</td>
-					<td class="ui_text_lt" ><font color="red"><s:fielderror><s:param>house</s:param></s:fielderror></font></td>
-					<td>&nbsp;</td>
-				</tr>
-				<tr>
 					<td class="ui_text_rt">手&nbsp;机&nbsp;&nbsp;号：</td>
 					<td class="ui_text_lt">
 						<input id="phone" name="phone" value="<s:property value="#request.phone" />" />
 					</td>
 					<td class="ui_text_lt"><font color="red"><s:fielderror><s:param>phone</s:param></s:fielderror></font></td>
-					<td>&nbsp;</td>
-				</tr>
-				<tr>
-					<td class="ui_text_rt">邮&nbsp;箱&nbsp;&nbsp;号：</td>
-					<td class="ui_text_lt">
-						<input id="mail" name="mail" value="<s:property value="#request.mail" />" />
-					</td>
-					<td class="ui_text_lt"><font color="red"><s:fielderror><s:param>mail</s:param></s:fielderror></font></td>
 					<td>&nbsp;</td>
 				</tr>
 				<tr>

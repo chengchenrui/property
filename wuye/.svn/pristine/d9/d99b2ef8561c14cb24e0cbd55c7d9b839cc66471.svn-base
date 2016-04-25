@@ -195,7 +195,7 @@ public class UserAction extends MyBaseAction {
 				}
 			}
 			if (flag > 0) {
-				addFieldError("userName", getText("*用户" + userName + "已存在！"));
+				addFieldError("name", getText("*用户" + userName + "已存在！"));
 				this.getRequest().setAttribute("q_name", q_name);
 				this.getRequest().setAttribute("q_houseId", q_houseId);
 				this.getRequest().setAttribute("start", start);

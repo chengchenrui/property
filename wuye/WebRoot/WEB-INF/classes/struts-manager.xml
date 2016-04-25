@@ -21,7 +21,10 @@
 		</action>
 		<!-- 管理员管理 -->
 		<action name="mag_*" method="{1}" class="managersAction">
+			<result name="toList" type="redirect">mag_queryData.action</result>
 			<result name="managersList">/WEB-INF/jsp/manager/manager_list.jsp</result>
+			<result name="addMag">/WEB-INF/jsp/manager/manager_add.jsp</result>
+			<result name="magUpdate">/WEB-INF/jsp/manager/manager_update.jsp</result>
 		</action>
 		
 	</package>

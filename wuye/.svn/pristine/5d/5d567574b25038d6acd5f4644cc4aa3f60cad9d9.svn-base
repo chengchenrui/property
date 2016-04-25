@@ -203,7 +203,7 @@
 											&start=<s:property value="#request.(#request.currentPage-1)*7" />
 											&dateStart=<s:property value="#request.dateStart"/>
 											&dateEnd=<s:property value="#request.dateEnd"/>">编辑</a>
-										<a onclick="return firm('<s:property value="#mag.name" />')" href="mag_deleteData.action?id=<s:property value="#mag.id" />
+										<a onclick="return firm('<s:property value="#user.name" />')" href="mag_deleteData.action?id=<s:property value="#user.id" />
 											&q_name=<s:property value="#request.q_name"/>
 											&start=<s:property value="#request.(#request.currentPage-1)*7" />
 											&dateStart=<s:property value="#request.dateStart"/>

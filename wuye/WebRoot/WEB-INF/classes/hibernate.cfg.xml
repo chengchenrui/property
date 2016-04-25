@@ -37,6 +37,7 @@
 		<mapping resource="com/wuye/model/User.hbm.xml" />
 		<mapping resource="com/wuye/model/Menu.hbm.xml" />
 		<mapping resource="com/wuye/model/Permissions.hbm.xml" />
+		<mapping resource="com/wuye/model/House.hbm.xml" />
 
 	</session-factory>
 

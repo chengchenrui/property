@@ -26,6 +26,9 @@
 			<result name="addMag">/WEB-INF/jsp/manager/manager_add.jsp</result>
 			<result name="magUpdate">/WEB-INF/jsp/manager/manager_update.jsp</result>
 		</action>
-		
+		<!--住房管理 -->
+		<action name="house_*" method="{1}" class="houseAction">
+			<result name="houseList">/WEB-INF/jsp/manager/house_list.jsp</result>
+		</action>
 	</package>
 </struts>    

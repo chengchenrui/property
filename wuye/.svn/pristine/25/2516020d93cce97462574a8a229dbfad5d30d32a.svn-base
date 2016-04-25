@@ -169,13 +169,13 @@
 									用户名
 								</th>
 								<th>
-									房号
-								</th>
-								<th>
 									电话
 								</th>
 								<th>
 									邮箱
+								</th>
+								<th>
+									房号
 								</th>
 								<th>
 									描述
@@ -200,13 +200,13 @@
 										<s:property value="#user.userName"/>
 									</td>
 									<td>
-										<s:property value="#user.userHouse" />
-									</td>
-									<td>
 										<s:property value="#user.phone" />
 									</td>
 									<td>
 										<s:property value="#user.mail" />
+									</td>
+									<td>
+										<s:property value="#user.userHouse" />
 									</td>
 									<td>
 										<s:property value="#user.description" />

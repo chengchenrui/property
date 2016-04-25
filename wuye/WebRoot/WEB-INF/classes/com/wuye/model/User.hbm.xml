@@ -16,6 +16,9 @@
 		<property name="userName" type="java.lang.String">
 			<column name="user_name" length="20" />
 		</property>
+		<property name="userHouse" type="java.lang.String">
+			<column name="user_house" length="32" />
+		</property>
 		<property name="password" type="java.lang.String">
 			<column name="password" length="32" />
 		</property>
@@ -25,9 +28,6 @@
 		<property name="mail" type="java.lang.String">
 			<column name="mail" length="50" />
 		</property>
-		<many-to-one name="house" column="house_id" class="com.wuye.model.House"
-			lazy="false" unique="true">
-		</many-to-one>
 		<property name="description" type="java.lang.String">
 			<column name="description" length="100" />
 		</property>

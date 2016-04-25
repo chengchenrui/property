@@ -26,11 +26,6 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-	<bean id="houseDAO" class="com.wuye.dao.impl.HouseDAO">
-		<property name="sessionFactory">
-			<ref bean="sessionFactory" />
-		</property>
-	</bean>
 	<bean id="menuDAO" class="com.wuye.dao.impl.MenuDAO">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
@@ -53,11 +48,6 @@
 		scope="singleton">
 		<property name="userDAO">
 			<ref bean="userDAO" />
-		</property>
-	</bean>
-	<bean id="houseService" class="com.wuye.service.impl.HouseService" scope="singleton">
-		<property name="houseDAO">
-			<ref bean="houseDAO"/>
 		</property>
 	</bean>
 	<bean id="menuService" class="com.wuye.service.impl.MenuService"
@@ -87,14 +77,6 @@
 	<bean id="userAction" class="com.wuye.action.UserAction" scope="prototype">
 		<property name="userService">
 			<ref bean="userService" />
-		</property>
-		<property name="houseService">
-			<ref bean="houseService"/>
-		</property>
-	</bean>
-	<bean id="houseAction" class="com.wuye.action.HouseAction">
-		<property name="houseService">
-			<ref bean="houseService"/>
 		</property>
 	</bean>
 	<bean id="menuAction" class="com.wuye.action.MenuAction" scope="prototype">

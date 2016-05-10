@@ -111,9 +111,4 @@
 			<ref bean="houseService" />
 		</property>
 	</bean>
-	<bean id="carAction" class="com.wuye.action.CarAction" scope="prototype">
-		<property name="carService">
-			<ref bean="carService"/>
-		</property>
-	</bean>
 </beans>

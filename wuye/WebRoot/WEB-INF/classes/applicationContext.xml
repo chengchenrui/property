@@ -41,6 +41,11 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
+	<bean id="carDAO" class="com.wuye.dao.impl.CarDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"></ref>
+		</property>
+	</bean>
 
 	<!-- Service -->
 	<bean id="managersService" class="com.wuye.service.impl.ManagersService"
@@ -73,6 +78,11 @@
 			<ref bean="houseDAO" />
 		</property>
 	</bean>
+	<bean id="carService" class="com.wuye.service.impl.CarService" scope="singleton">
+		<property name="carDAO">
+			<ref bean="carDAO" />
+		</property>
+	</bean>
 
 	<!-- Action -->
 	<bean id="loginAction" class="com.wuye.action.LoginAction" scope="prototype">
@@ -101,5 +111,9 @@
 			<ref bean="houseService" />
 		</property>
 	</bean>
-
+	<bean id="carAction" class="com.wuye.action.CarAction" scope="prototype">
+		<property name="carService">
+			<ref bean="carService"/>
+		</property>
+	</bean>
 </beans>

@@ -1,0 +1,36 @@
+package com.wuye.service;
+
+import java.util.List;
+
+import com.wuye.model.Car;
+
+public interface ICarService {
+	public abstract void save(Car transientInstance);
+
+	public abstract void delete(Car persistentInstance);
+
+	public abstract Car findById(java.lang.Integer id);
+
+	public abstract List findByExample(Car instance);
+
+	public abstract List findByProperty(String propertyName, Object value);
+
+	public abstract List findByLocation(Object location);
+
+	public abstract List findByCarNum(Object carNum);
+
+	public abstract List findByState(Object state);
+
+	public abstract List findByUserId(Object userId);
+
+	public abstract List findByDescription(Object description);
+
+	public abstract List findAll();
+
+	public abstract Car merge(Car detachedInstance);
+
+	public abstract void attachDirty(Car instance);
+
+	public abstract void attachClean(Car instance);
+
+}

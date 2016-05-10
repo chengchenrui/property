@@ -31,8 +31,8 @@
 			<result name="houseList">/WEB-INF/jsp/manager/house_list.jsp</result>
 		</action>
 		<!-- 车位管理 -->
-		<action name="car_*" method="{1}" class="carAction">
-			<result name="carList">/WEB-INF/jsp/manager/car_list.jsp</result>
+		<action name="car_*" method="{}" class="carAction">
+			<result name="carList"></result>
 		</action>
 	</package>
 </struts>    

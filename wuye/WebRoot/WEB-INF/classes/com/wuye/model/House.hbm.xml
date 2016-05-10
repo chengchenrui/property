@@ -42,10 +42,10 @@
 				<comment>描述</comment>
 			</column>
 		</property>
-		<property name="createTime" type="java.sql.Timestamp">
+		<property name="createTime" type="java.util.Date">
 			<column name="create_time" length="19" />
 		</property>
-		<property name="updateTime" type="java.sql.Timestamp">
+		<property name="updateTime" type="java.util.Date">
 			<column name="update_time" length="19" />
 		</property>
 	</class>
